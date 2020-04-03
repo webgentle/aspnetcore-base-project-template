@@ -1,0 +1,27 @@
+﻿@using Web.App.Helpers
+
+@inject IUserService _user
+
+<ul class="navbar-nav">
+    @if (_user.IsAuthenticated())
+    {
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Hello @(User.FindFirst("UserFirstName").Value + " " + User.FindFirst("UserLastName").Value)
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" asp-action="ChangePassword" asp-controller="Account" asp-area="">Change Password</a>
+
+                <a class="dropdown-item" asp-action="Logout" asp-controller="Account"
+                   asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">Logout</a>
+            </div>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="btn btn-outline-primary" asp-controller="Account" asp-action="Login">Login</a>
+            <a class="btn btn-primary" asp-controller="Account" asp-action="Signup">Register</a>
+        </li>
+    }
+</ul>

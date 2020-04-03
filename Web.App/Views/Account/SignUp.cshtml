@@ -1,0 +1,71 @@
+﻿@model Web.App.Models.Account.SignUpUserModel
+
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_MembershipLayout.cshtml";
+}
+
+<h1>Register</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="SignUp">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <div class="input-group mb-3">
+                    <input asp-for="Password" class="form-control">
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="basic-addon2">
+                            <i class="far fa-eye showPassword"></i>
+                            <i class="far fa-eye-slash showPassword" style="display:none"></i>
+                        </span>
+                    </div>
+                </div>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary btn-block" />
+            </div>
+        </form>
+        <div class="text-center">
+            <span>OR</span><br />
+            Already a member?
+            <a asp-controller="Account" asp-action="Login" asp-area="" title="Sign in">Sign in</a>
+        </div>
+    </div>
+    <div class="col-md-8 d-none d-lg-block">
+        <img src="~/Images/signup.svg" alt="login" class="img-fluid membership-img ml-5" />
+    </div>
+</div>
+
+@section Scripts{
+
+    <script>
+        $(".input-group-append").click(function () {
+            $(".showPassword").toggle();
+            var pwd = document.getElementById("Password");
+            if (pwd.getAttribute('type') === 'password') {
+                pwd.setAttribute('type', 'text')
+            } else {
+                pwd.setAttribute('type', 'password')
+            }
+        });
+    </script>
+}

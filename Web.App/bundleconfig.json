@@ -1,0 +1,22 @@
+[
+  {
+    "outputFileName": "wwwroot/Css/app.min.css",
+    "inputFiles": [
+      "wwwroot/Css/Application.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    }
+  },
+
+  {
+    "outputFileName": "wwwroot/Library/appLibrary.min.js",
+    "inputFiles": [
+      "wwwroot/Library/jquery/jquery.min.js"
+    ],
+    "minify": {
+      "enabled": false
+    }
+  }
+]

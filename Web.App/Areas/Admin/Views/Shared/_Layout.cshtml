@@ -1,0 +1,54 @@
+﻿@inject IOptions<ApplicationConfiguration> applicationConfiguration
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewData["Title"] | @applicationConfiguration.Value.Name - Admin</title>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <link href="~/admin/css/admin.css" rel="stylesheet">
+
+    <environment include="Development">
+
+    </environment>
+    <environment exclude="Development">
+
+    </environment>
+</head>
+<body id="page-top">
+
+    <div id="wrapper">
+        <partial name="_SideBar" />
+
+        <div id="content-wrapper" class="d-flex flex-column">
+            <!-- Main Content -->
+            <div id="content">
+                <partial name="_TopNavigation" />
+                <div class="container-fluid">
+                    @RenderBody()
+                </div>
+            </div>
+            <partial name="_Footer" />
+        </div>
+    </div>
+    <!-- End of Page Wrapper -->
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <script src="~/Library/jquery/jquery.min.js"></script>
+    <script src="~/Library/jqueryui/jquery-ui.js"></script>
+    <script src="~/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,7 @@
+﻿@inject IOptions<ApplicationConfiguration> applicationConfiguration
+
+<footer class="border-top footer text-muted text-center">
+    <div class="container">
+        Copyright  &copy; @applicationConfiguration.Value.Name @System.DateTime.Now.Year
+    </div>
+</footer>

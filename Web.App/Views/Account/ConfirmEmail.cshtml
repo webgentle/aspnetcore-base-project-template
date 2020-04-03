@@ -1,0 +1,50 @@
+﻿@model Web.App.Models.Account.ConfirmEmailModel
+
+@{
+    ViewData["Title"] = "Confirm Email";
+    Layout = "~/Views/Shared/_MembershipLayout.cshtml";
+}
+
+<h1>Confirm Email</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        @if (Model.IsConfirmed)
+        {
+            <div class="alert alert-success" role="alert">
+                Your email has been verified successfully.<br />
+                You are ready to  <a asp-controller="Account"
+                                     asp-action="Login"
+                                     asp-area="" class="alert-link" title="Sign in">Sign in</a>
+            </div>
+        }
+        else
+        {
+            <form asp-action="ConfirmEmail">
+                @if (Model.IsSuccess)
+                {
+                    <p>An email has been sent on your registered email.</p>
+                }
+                else
+                {
+                    <p>
+                        You are one step away from using your account. <br />
+                        Click on the link sent on your registered email address to verify your email.
+                    </p>
+                }
+                <p>
+                    Did not get any email or deleted by mistake?
+                </p>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Email" />
+                <div class="form-group">
+                    <br />
+                    <input type="submit" value="Resend confirmation email" class="btn btn-primary btn-block" />
+                </div>
+            </form>
+        }
+    </div>
+    <div class="col-md-8 d-none d-lg-block">
+        <img src="~/Images/verify-email.svg" alt="login" class="img-fluid membership-img ml-5" />
+    </div>
+</div>

@@ -1,0 +1,29 @@
+﻿@inject IOptions<ApplicationConfiguration> applicationConfiguration
+
+
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center"
+       asp-action="Dashboard" asp-controller="Home" asp-area="Admin">
+        @applicationConfiguration.Value.Name
+    </a>
+
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#">
+            <span>Menu 1</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#">
+            <span>Menu 2</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#">
+            <span>Menu 3</span>
+        </a>
+    </li>
+</ul>
